@@ -12,6 +12,7 @@ wheels/
 # macos files
 .DS_Store
 .idea/
+.qodo
 
 
 # env
