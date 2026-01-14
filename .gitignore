@@ -12,3 +12,9 @@ wheels/
 # macos files
 .DS_Store
 .idea/
+
+
+# env
+.env
+test.db
+
