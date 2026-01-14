@@ -16,5 +16,6 @@ wheels/
 
 # env
 .env
+env/
 test.db
 
