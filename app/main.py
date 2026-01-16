@@ -13,7 +13,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    init_db()
+    if settings.ENVIRONMENT == "DEVELOPMENT":
+        init_db()
     yield
 
 
