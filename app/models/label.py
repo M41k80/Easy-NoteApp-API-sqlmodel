@@ -1,8 +1,4 @@
 
-
-
-from cProfile import label
-from re import S
 from sqlalchemy import UniqueConstraint
 from sqlmodel import Field, SQLModel
 
@@ -10,7 +6,7 @@ from sqlmodel import Field, SQLModel
 class Label(SQLModel, table=True):
     
     __tablename__ = 'label'   #magic attribute to specify table name
-    __table_args__ = (UniqueConstraint("owner_id", "name", name="uq_label_owner_name"))
+    __table_args__ = (UniqueConstraint("owner_id", "name", name="uq_label_owner_name"),)
     
     id: int = Field(default=None, primary_key=True, nullable=False)
     name: str = Field(index=True, min_length=1, max_length=50)
@@ -19,7 +15,7 @@ class Label(SQLModel, table=True):
 
 class NoteLabelLink(SQLModel, table=True):
     __tablename__ = 'note_label_link'   
-    __table_args__ = (UniqueConstraint("note_id", "label_id", name="uq_note_label_link_note_label"))
+    __table_args__ = (UniqueConstraint("note_id", "label_id", name="uq_note_label_link_note_label"),)
     
     
     id: int = Field(default=None, primary_key=True, nullable=False)
