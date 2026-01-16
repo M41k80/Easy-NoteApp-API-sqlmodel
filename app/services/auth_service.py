@@ -27,8 +27,9 @@ class AuthService:
     
     def login(self, email: str, password: str) -> str:
         user = self.repository.get_by_email(email)
-        if not user or not user.verify_password(password[:72], user.hashed_password):
-            raise HTTPException(status_code=401, detail="Invalid credentials")
-        
+        if not user or not verify_password(password[:72], user.hashed_password):
+            raise HTTPException(
+                status_code=401, detail="Credenciales inválidas")
+
         token = create_access_token({"sub": str(user.id)})
         return token

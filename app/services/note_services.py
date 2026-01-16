@@ -45,7 +45,7 @@ class NoteServices:
     
     
     def list_visible(self, user_id: int) -> list[Note]:
-        owned = self.notes.list_owned(user_id=user_id)
+        owned = self.notes.list_owned(user_id)
         
         direct_ids = self.shares.list_note_ids_shared_directly(user_id)
         shared_label_ids = self.shares.list_label_ids_shared_with_user(user_id)
@@ -70,6 +70,8 @@ class NoteServices:
         
         if payload.label_ids:
             self._set_labels(owner_id, note.id, payload.label_ids)
+            
+        return note
             
             
             
