@@ -16,7 +16,7 @@ class ShareRole(str, Enum):
 class NoteShare(SQLModel, table=True):
     
     __tablename__ = 'note_share'   #magic attribute to specify table name
-    __table_args__ = (UniqueConstraint("note_id", "user_id", name="uq_note_share_user_note"))
+    __table_args__ = (UniqueConstraint("note_id", "user_id", name="uq_note_share_user_note"),)
     
     
     id: int = Field(default=None, primary_key=True, nullable=False)
@@ -28,10 +28,16 @@ class NoteShare(SQLModel, table=True):
 class LabelShare(SQLModel, table=True):
     
     __tablename__ = 'label_share'   #magic attribute to specify table name
-    __table_args__ = (UniqueConstraint("label_id", "user_id", name="uq_label_share_user_label"))
+    __table_args__ = (UniqueConstraint("label_id", "user_id", name="uq_label_share_user_label"),)
     
     
     id: int = Field(default=None, primary_key=True, nullable=False)
     label_id: int = Field(foreign_key='label.id', index=True)
     user_id: int = Field(foreign_key='user.id', index=True)
     role: ShareRole = Field(default=ShareRole.READ)
+    
+    
+    
+class ShareRequest(SQLModel):
+    target_user_id: int = Field(gt=0)
+    role: ShareRole = ShareRole.READ
