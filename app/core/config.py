@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     JWT_ALGORITHM: str = Field(default="HS256", env="JWT_ALGORITHM")
     JWT_ACCESS_TOKEN_EXPIRE_MINUTES: int = Field(default=60 * 24, env="JWT_ACCESS_TOKEN_EXPIRE_MINUTES")
     PROJECT_NAME: str = "Notes"
+    ENVIRONMENT: str = Field(..., env="ENVIRONMENT")
     
     class Config:
         env_file = ".env"

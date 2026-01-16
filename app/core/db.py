@@ -11,7 +11,9 @@ engine = create_engine(
 )
 
 def init_db() -> None:
-    SQLModel.metadata.create_all(engine)  #development
+    if settings.ENVIRONMENT == "DEVELOPMENT":
+        SQLModel.metadata.create_all(engine)
+    # SQLModel.metadata.create_all(engine)  #development
     
     
 def get_session() -> Iterator[Session]:
