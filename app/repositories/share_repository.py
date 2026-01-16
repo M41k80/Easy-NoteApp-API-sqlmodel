@@ -14,14 +14,14 @@ class ShareRepository:
         if share: 
             share.role = role
             self.db.add(share)
-            self.db.flush()
+            
             self.db.commit()
             self.db.refresh(share)
             return share
         
         share = NoteShare(note_id=note_id, user_id=user_id, role=role)
         self.db.add(share)
-        self.db.flush()
+        
         self.db.commit()
         self.db.refresh(share)
         return share
@@ -39,14 +39,14 @@ class ShareRepository:
         if share: 
             share.role = role
             self.db.add(share)
-            self.db.flush()
+            
             self.db.commit()
             self.db.refresh(share)
             return share
         
-        share = NoteShare(label_id=label_id, user_id=user_id, role=role)
+        share = LabelShare(label_id=label_id, user_id=user_id, role=role)
         self.db.add(share)
-        self.db.flush()
+        
         self.db.commit()
         self.db.refresh(share)
         return share

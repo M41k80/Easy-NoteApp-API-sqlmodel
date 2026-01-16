@@ -50,13 +50,13 @@ class LabelRepository:
         if not ids:
             return []
         
-        return self.db.exec(select(Label.id).where(Label.owner_id == owner_id, Label.id.in_(set(ids)))).scalars().all()
+        return self.db.exec(select(Label.id).where(Label.owner_id == owner_id, Label.id.in_(set(ids)))).all()
     
     
     
     
     def list_label_ids_for_note(self, note_id: int) -> list[int]:
-        return self.db.exec(select(NoteLabelLink.label_id).where(NoteLabelLink.note_id == note_id)).scalars().all()
+        return self.db.exec(select(NoteLabelLink.label_id).where(NoteLabelLink.note_id == note_id)).all()
     
     
     
@@ -64,4 +64,4 @@ class LabelRepository:
         if not label_ids:
             return []
         
-        return self.db.exec(select(NoteLabelLink.note_id).where(NoteLabelLink.label_id.in_(set(label_ids)))).scalars().all()
+        return self.db.exec(select(NoteLabelLink.note_id).where(NoteLabelLink.label_id.in_(set(label_ids)))).all()

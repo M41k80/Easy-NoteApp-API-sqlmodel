@@ -23,6 +23,8 @@ def create_note(payload: NoteCreate, db: DBSession, user: CurrentUser):
 
 
 
+
+
 @router.patch("/{note_id}", response_model=NoteRead)
 def update_note(note_id: int, payload: NoteUpdate, db: DBSession, user: CurrentUser):
     return NoteServices(db).update(user.id, note_id, payload)
