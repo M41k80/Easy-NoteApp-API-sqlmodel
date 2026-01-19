@@ -14,7 +14,7 @@ ENV PYTHONUNBUFFERED=1
 RUN pip install --no-cache-dir uv
 
 COPY requirements.txt .
-RUN uv pip install --system --no-cache -r requirements.txt
+RUN pip install --system --no-cache -r requirements.txt
 
 # ─────────────────────────────────────
 # Código
