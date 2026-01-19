@@ -10,7 +10,7 @@ class Label(SQLModel, table=True):
     
     id: int = Field(default=None, primary_key=True, nullable=False)
     name: str = Field(index=True, min_length=1, max_length=50)
-    owner_id: int = Field(foreign_key='user.id', index=True)
+    owner_id: int = Field(foreign_key='app_user.id', index=True)
     
 
 class NoteLabelLink(SQLModel, table=True):

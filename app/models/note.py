@@ -10,7 +10,7 @@ class Note(SQLModel, table=True):
     title: str
     content : str = ""
     color: Optional[str] = None
-    owner_id: int = Field(foreign_key="user.id", nullable=False, index=True)
+    owner_id: int = Field(foreign_key="app_user.id", nullable=False, index=True)
     
     
 # DTOs

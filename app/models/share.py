@@ -21,7 +21,7 @@ class NoteShare(SQLModel, table=True):
     
     id: int = Field(default=None, primary_key=True, nullable=False)
     note_id: int = Field(foreign_key='note.id', index=True)
-    user_id: int = Field(foreign_key='user.id', index=True)
+    user_id: int = Field(foreign_key='app_user.id', index=True)
     role: ShareRole = Field(default=ShareRole.READ)
     
     
@@ -33,7 +33,7 @@ class LabelShare(SQLModel, table=True):
     
     id: int = Field(default=None, primary_key=True, nullable=False)
     label_id: int = Field(foreign_key='label.id', index=True)
-    user_id: int = Field(foreign_key='user.id', index=True)
+    user_id: int = Field(foreign_key='app_user.id', index=True)
     role: ShareRole = Field(default=ShareRole.READ)
     
     
